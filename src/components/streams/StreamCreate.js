@@ -3,7 +3,6 @@ import { Field, reduxForm } from "redux-form";
 
 class streamCreate extends React.Component {
   renderInput({ input, label }) {
-    console.log(input);
     return (
       <div className="field">
         <label>{label}</label>
@@ -11,10 +10,18 @@ class streamCreate extends React.Component {
       </div>
     );
   }
+
+  onSubmit(event) {
+    event.preventDefault();
+  }
   render() {
+    console.log(this.props);
     return (
       <div>
-        <form className="ui form">
+        <form
+          onSubmit={this.props.handleSubmit(this.onSubmit)}
+          className="ui form"
+        >
           <Field
             name="title"
             component={this.renderInput}
